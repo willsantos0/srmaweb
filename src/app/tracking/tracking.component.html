@@ -1,0 +1,11 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+
+  <h2 class="title">{{ name }}</h2>
+
+  <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>
+
+</div>

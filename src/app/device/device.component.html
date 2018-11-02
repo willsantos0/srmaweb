@@ -1,0 +1,96 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <h2 class="title">Cadastro de Dispositivo</h2>
+  <form id="deviceForm" [formGroup]="deviceForm" (ngSubmit)="saveOrUpdate()">
+    <input type="hidden" formControlName="id">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <mat-form-field class="input-full-width">
+            <input required type="text" matInput #saferId formControlName="saferId" placeholder="Código de ativação">
+          </mat-form-field>
+          <div *ngIf="f.saferId.touched && f.saferId.errors" class="invalid-feedback">
+            <div *ngIf="f.saferId.errors.required"> {{ formErrors.saferId.required }} </div>
+            <div *ngIf="f.saferId.errors.maxlength"> {{ formErrors.saferId.maxlength }} </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <mat-form-field class="input-full-width">
+            <input required type="text" matInput #name formControlName="name" placeholder="Nome">
+          </mat-form-field>
+          <div *ngIf="f.name.touched && f.name.errors" class="invalid-feedback">
+            <div *ngIf="f.name.errors.required"> {{ formErrors.name.required }} </div>
+            <div *ngIf="f.name.errors.maxlength"> {{ formErrors.name.maxlength }} </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <mat-form-field class="input-full-width">
+            <input required type="text" matInput #username formControlName="username" placeholder="Usuário">
+          </mat-form-field>
+          <div *ngIf="f.username.touched && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required"> {{ formErrors.username.required }} </div>
+            <div *ngIf="f.username.errors.maxlength"> {{ formErrors.username.maxlength }} </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <mat-form-field class="input-full-width">
+            <input required type="password" matInput #password formControlName="password" placeholder="Senha">
+          </mat-form-field>
+          <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required"> {{ formErrors.password.required }} </div>
+            <div *ngIf="f.password.errors.maxlength"> {{ formErrors.password.maxlength }} </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <mat-form-field class="input-full-width">
+            <input required type="password" matInput #passwordConfirm formControlName="passwordConfirm" placeholder="Confirmar Senha">
+          </mat-form-field>
+          <div *ngIf="f.passwordConfirm.touched && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.passwordConfirm.errors.required"> {{ formErrors.passwordConfirm.required }} </div>
+            <div *ngIf="f.passwordConfirm.errors.maxlength"> {{ formErrors.passwordConfirm.maxlength }} </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <mat-form-field class="input-full-width">
+            <input required type="text" matInput #email formControlName="email" placeholder="E-mail">
+          </mat-form-field>
+          <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required"> {{ formErrors.email.required }} </div>
+            <div *ngIf="f.email.errors.maxlength"> {{ formErrors.email.maxlength }} </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <button type="submit" mat-raised-button color="primary" class="float-right" [disabled]="(deviceForm.invalid)">
+            <i class="material-icons"> save </i> Salvar
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

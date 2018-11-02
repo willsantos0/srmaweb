@@ -1,0 +1,64 @@
+<div class="container telaLogin">
+  <div class="row">
+    <div class="col">
+      <img id="logo" [src]="logo" class="img-fluid" alt="Logo SAFER">
+    </div>
+  </div>
+  <div class="row">
+    <div class="box-shadow">
+      <div *ngIf="showMessageError" class="alert alert-danger fade show" role="alert">
+        <i class="material-icons">error</i> Usuário ou senha inválidos
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeInvalidUserMessage()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="loginForm" [formGroup]="loginForm" (ngSubmit)="OnSubmit()">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <mat-form-field class="input-full-width">
+                <input type="text" matInput #UserName formControlName="username" maxlength="50" placeholder="Usuário" required>
+                <mat-error *ngIf="f.username.touched && f.username.errors">
+                  <span *ngIf="f.username.errors.required">Usuário é obrigatório</span>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <mat-form-field class="input-full-width">
+                <input type="password" matInput #Password formControlName="password" maxlength="50" placeholder="Senha" required>
+                <mat-error *ngIf="f.password.touched && f.password.errors">
+                  <span *ngIf="f.password.errors.required">Senha é obrigatório</span>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <button [disabled]="!loginForm.valid" mat-flat-button color="primary" class="btn btn-large btn-submit" type="submit">
+                <i class="material-icons">lock</i> Realizar Login </button>
+              <img id="loading" *ngIf="loading" [src]="loadingGif"/>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <button mat-button color="primary">Esqueci minha senha</button>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <button mat-button color="primary">Cadastrar-se</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
