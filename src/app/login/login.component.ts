@@ -1,10 +1,12 @@
+import { AuthenticationService } from './../shared/services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'login',
+  selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -16,7 +18,8 @@ export class LoginComponent implements OnInit {
   loadingGif = '../assets/images/loading.gif';
 
   constructor(private router: Router,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     this.loginFormGroup();
@@ -31,16 +34,24 @@ export class LoginComponent implements OnInit {
 
   get f() { return this.loginForm.controls; }
 
+
   OnSubmit() {
     this.showMessageError = false;
     this.loading = true;
 
-    if (this.loginForm.value.username === 'teste123' && this.loginForm.value.password === 'teste123') {
-      this.router.navigate(['/home']);
-    } else {
-      this.showMessageError = true;
-      this.loading = false;
-    }
+    this.authenticationService.login(this.loginForm.value).subscribe((data: any) => {
+      if (data.authenticated) {
+        localStorage.setItem('access_token', data.access_token);
+        this.router.navigate(['/home']);
+      } else {
+        this.showMessageError = true;
+        this.loading = false;
+      }
+    },
+      (err: HttpErrorResponse) => {
+        this.showMessageError = true;
+        this.loading = false;
+      });
   }
 
   closeInvalidUserMessage() {
