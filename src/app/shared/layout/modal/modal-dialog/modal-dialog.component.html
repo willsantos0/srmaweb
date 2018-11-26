@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{ data.title }}</h4>
+</div>
+<div class="modal-body">
+  <div class="container">
+    {{ data.message }}
+  </div>
+</div>
+<div class="modal-footer">
+  <button mat-raised-button color="warn" data-dismiss="modal" (click)="onNoClick()">
+    <i class="material-icons"> close </i> Fechar
+  </button>
+</div>

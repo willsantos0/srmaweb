@@ -1,0 +1,19 @@
+{
+  "device": [
+    {
+      "id": 1,
+      "saferId": "fhjhvsdjffd45645ds4f5ds4f5",
+      "description": "Dispositivo de casa"
+    },
+    {
+      "id": 2,
+      "saferId": "5849058495djhkfs",
+      "description": "Dispositivo do carro 1"
+    },
+    {
+      "id": 3,
+      "saferId": "5445646",
+      "description": "Dispositivo do carro 2"
+    }
+  ]
+}

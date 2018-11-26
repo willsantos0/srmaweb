@@ -4,6 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatDialog } from '@angular/material';
+import { UserComponent } from '../user/user.component';
+import { UserModalComponent } from '../user/user-modal/user-modal.component';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +22,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router,
     private formBuilder: FormBuilder,
-    private authenticationService: AuthenticationService) { }
+    private authenticationService: AuthenticationService,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
     this.loginFormGroup();
@@ -41,7 +45,7 @@ export class LoginComponent implements OnInit {
 
     this.authenticationService.login(this.loginForm.value).subscribe((data: any) => {
       if (data.authenticated) {
-        localStorage.setItem('access_token', data.access_token);
+        this.authenticationService.setToken(data.access_token);
         this.router.navigate(['/home']);
       } else {
         this.showMessageError = true;
@@ -56,5 +60,13 @@ export class LoginComponent implements OnInit {
 
   closeInvalidUserMessage() {
     this.showMessageError = false;
+  }
+
+  openModal() {
+    this.dialog.open(UserModalComponent, {
+      data: { user : null },
+      position: { top: '2%' },
+      width: '800px'
+    });
   }
 }

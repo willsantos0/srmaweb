@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
+import { Http, RequestOptions } from '@angular/http';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -46,13 +47,21 @@ import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './shared/layout/navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { DeviceComponent } from './device/device.component';
+import { DeviceFormComponent } from './device/device-form/device-form.component';
 import { TrackingComponent } from './tracking/tracking.component';
+import { ModalDialogComponent } from './shared/layout/modal/modal-dialog/modal-dialog.component';
+import { ModalConfirmDialogComponent } from './shared/layout/modal/modal-confirm-dialog/modal-confirm-dialog.component';
+import { UserComponent } from './user/user.component';
 
 import { AuthenticationService } from './shared/services/authentication.service';
+import { DeviceService } from './shared/services/device.service';
+import { UserService } from './shared/services/user.service';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { appRoutes } from './routes';
-import { Http, RequestOptions } from '@angular/http';
+import { UserModalComponent } from './user/user-modal/user-modal.component';
+import { UserFormComponent } from './user/user-form/user-form.component';
+import { DeviceListComponent } from './device/device-list/device-list.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig(), http, options);
@@ -65,7 +74,14 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     NavbarComponent,
     HomeComponent,
     DeviceComponent,
-    TrackingComponent
+    TrackingComponent,
+    ModalDialogComponent,
+    ModalConfirmDialogComponent,
+    UserComponent,
+    DeviceFormComponent,
+    UserModalComponent,
+    UserFormComponent,
+    DeviceListComponent
   ],
   imports: [
     BrowserModule,
@@ -115,6 +131,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   providers: [
     AuthGuard,
     AuthenticationService,
+    DeviceService,
+    UserService,
     {
       provide: [HTTP_INTERCEPTORS, AuthHttp],
       useFactory: authHttpServiceFactory,
@@ -122,6 +140,12 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
       useClass: AuthInterceptor,
       multi: true
     }],
+    entryComponents: [
+      ModalDialogComponent,
+      ModalConfirmDialogComponent,
+      UserModalComponent,
+      DeviceFormComponent
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

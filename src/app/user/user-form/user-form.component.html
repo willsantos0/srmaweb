@@ -1,0 +1,79 @@
+<div class="container">
+  <form id="userForm" [formGroup]="userForm" (ngSubmit)="saveOrUpdate()">
+    <input type="hidden" formControlName="id">
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <mat-form-field class="input-full-width">
+            <input required type="text" matInput #name formControlName="name" placeholder="Nome">
+            <mat-error *ngIf="f.name.touched && f.name.errors" class="invalid-feedback">
+              <span *ngIf="f.name.errors.required"> {{ formErrors.name.required }} </span>
+              <span *ngIf="f.name.errors.maxlength"> {{ formErrors.name.maxlength }} </span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <mat-form-field class="input-full-width">
+            <input required type="text" matInput #email formControlName="email" placeholder="E-mail">
+            <mat-error *ngIf="f.email.touched && f.email.errors" class="invalid-feedback">
+              <span *ngIf="f.email.errors.required"> {{ formErrors.email.required }} </span>
+              <span *ngIf="f.email.errors.email"> {{ formErrors.email.email }} </span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <mat-form-field class="input-full-width">
+            <input required type="password" matInput #password formControlName="password" placeholder="Senha">
+            <mat-error *ngIf="f.password.touched && f.password.errors" class="invalid-feedback">
+              <span *ngIf="f.password.errors.required"> {{ formErrors.password.required }} </span>
+              <span *ngIf="f.password.errors.maxlength"> {{ formErrors.password.maxlength }} </span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <mat-form-field class="input-full-width">
+            <input required type="password" matInput #passwordConfirm formControlName="passwordConfirm" placeholder="Confirmar Senha">
+            <mat-error *ngIf="f.passwordConfirm.touched && f.passwordConfirm.errors" class="invalid-feedback">
+              <span *ngIf="f.passwordConfirm.errors.required"> {{ formErrors.passwordConfirm.required }} </span>
+              <span *ngIf="f.passwordConfirm.errors.maxlength"> {{ formErrors.passwordConfirm.maxlength }} </span>
+              <span *ngIf="f.passwordConfirm.errors.mismatch"> {{ formErrors.passwordConfirm.mismatch }} </span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row" *ngIf="auth.isAuthenticated()">
+      <div class="col">
+        <div class="form-group">
+          <mat-slide-toggle class="margin-slide" [color]="color" (click)="disableSaferId()">
+            Possui SaferId?
+          </mat-slide-toggle>
+        </div>
+      </div>
+    </div> -->
+    <!-- <app-device-form *ngIf="disabled" [disabled]="disabled" [deviceForm]="userForm"></app-device-form> -->
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <button type="submit" mat-stroked-button color="primary" class="float-right" [disabled]="userForm.invalid">
+            <i class="material-icons"> save </i> {{ buttonLabel }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

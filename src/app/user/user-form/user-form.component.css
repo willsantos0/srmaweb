@@ -1,0 +1,11 @@
+.margin-slide {
+    margin: 10px;
+  }
+
+.input-full-width {
+  width: 100% !important;
+}
+
+.invalid-feedback {
+  display: block;
+}

@@ -36,4 +36,12 @@ export class GenericService {
   getEndpointLogin(): string {
     return this._environment.LOGIN;
   }
+
+  getEndpointDevice(): string {
+    return this._environment.DEVICE;
+  }
+
+  getEndpointUser(): string {
+    return this._environment.USER;
+  }
 }
