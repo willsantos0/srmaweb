@@ -44,4 +44,8 @@ export class GenericService {
   getEndpointUser(): string {
     return this._environment.USER;
   }
+
+  getEndpointTracking(): string {
+    return this._environment.TRACKING;
+  }
 }

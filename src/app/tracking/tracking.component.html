@@ -2,8 +2,13 @@
 
   <h2 class="title">{{ name }}</h2>
 
-  <agm-map [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
+    <agm-marker *ngFor="let tracking of listTrackings" [latitude]="tracking.latitude" [longitude]="tracking.longitude">
+      <agm-info-window>
+        <strong>InfoWindow content</strong>
+      </agm-info-window>
+    </agm-marker>
+
   </agm-map>
 
 </div>

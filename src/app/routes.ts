@@ -1,3 +1,4 @@
+import { TrackingDetailComponent } from './tracking/tracking-detail/tracking-detail.component';
 import { DeviceComponent } from './device/device.component';
 import { HomeComponent } from './home/home.component';
 import { Routes } from '@angular/router';
@@ -11,5 +12,6 @@ export const appRoutes: Routes = [
     { path : '', redirectTo: 'home', pathMatch : 'full', canActivate: [ AuthGuard ] },
     { path: 'home', component: HomeComponent, canActivate: [ AuthGuard ] },
     { path: 'device', component: DeviceComponent, canActivate: [ AuthGuard ] },
-     { path: 'user', component: UserComponent}
+    { path: 'user', component: UserComponent},
+    { path: 'tracking/:srmaCode', component: TrackingDetailComponent }
 ];

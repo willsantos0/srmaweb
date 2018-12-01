@@ -18,7 +18,7 @@ export class DeviceFormComponent implements OnInit {
   deviceForm: FormGroup;
 
   formErrors = {
-    'saferId': {
+    'srmaCode': {
       'required': 'Código de ativação é obrigatório.',
       'maxlength': 'Código de ativação deve ter no máximo 50 caracteres.'
     },

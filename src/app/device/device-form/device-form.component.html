@@ -10,10 +10,10 @@
       <div class="col">
         <div class="form-group">
           <mat-form-field class="input-full-width">
-            <input required type="text" matInput #saferId formControlName="saferId" placeholder="Código de ativação">
-            <mat-error *ngIf="f.saferId.touched && f.saferId.errors" class="invalid-feedback">
-              <span *ngIf="f.saferId.errors.required"> {{ formErrors.saferId.required }} </span>
-              <span *ngIf="f.saferId.errors.maxlength"> {{ formErrors.saferId.maxlength }} </span>
+            <input required type="text" matInput #srmaCode formControlName="srmaCode" placeholder="Código de ativação">
+            <mat-error *ngIf="f.srmaCode.touched && f.srmaCode.errors" class="invalid-feedback">
+              <span *ngIf="f.srmaCode.errors.required"> {{ formErrors.srmaCode.required }} </span>
+              <span *ngIf="f.srmaCode.errors.maxlength"> {{ formErrors.srmaCode.maxlength }} </span>
             </mat-error>
           </mat-form-field>
         </div>

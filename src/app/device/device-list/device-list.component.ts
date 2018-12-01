@@ -17,7 +17,7 @@ export class DeviceListComponent implements OnInit {
 
   devices: Device[];
   title: string;
-  displayedColumns: string[] = ['saferId', 'description', 'id'];
+  displayedColumns: string[] = ['srmaCode', 'description', 'customSrmaCode'];
   dataSource: MatTableDataSource<Device>;
   message: string;
 
@@ -74,7 +74,7 @@ export class DeviceListComponent implements OnInit {
   }
 
   openConfirmDialog(device: Device): void {
-    this.title = 'O device "' + device.saferId + '" será excluído. Deseja continuar?';
+    this.title = 'O device "' + device.srmaCode + '" será excluído. Deseja continuar?';
 
     const dialogRef = this.dialog.open(ModalConfirmDialogComponent, {
       position: { top: '6%' },
@@ -83,7 +83,7 @@ export class DeviceListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.deleteDevice(device.saferId);
+        this.deleteDevice(device.srmaCode);
       }
     });
   }

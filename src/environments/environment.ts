@@ -2,14 +2,17 @@ export const environment = {
   production: false,
 
   // URL da API
-  URL_API: 'http://www.mocky.io/v2',
+  URL_API: 'http://localhost:3000',
 
   // Login
   LOGIN: '/5bfb45523200006b00bee45b',
 
   // Device
-  DEVICE: '/5bfb45913200005e00bee45c',
+  DEVICE: '/device',
 
   // User
-  USER: '/user'
+  USER: '/user',
+
+  // Tracking
+  TRACKING: '/tracking'
 };

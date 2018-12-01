@@ -21,8 +21,8 @@ export class DeviceService extends GenericService {
     return this.http.put<Device>(this.getUrlApi() + this.getEndpointDevice(), device, { headers: this.getHeadersWithUserAuthorization() });
   }
 
-  delete(saferId: string) {
-    return this.http.delete(this.getUrlApi() + this.getEndpointDevice() + '/' + saferId,
+  delete(srmaCode: string) {
+    return this.http.delete(this.getUrlApi() + this.getEndpointDevice() + '/' + srmaCode,
       { headers: this.getHeadersWithUserAuthorization() });
   }
 

@@ -77,19 +77,19 @@ export class UserFormComponent implements OnInit {
 
   save() {
     this.userService.save(this.userForm.value).subscribe((data: any) => {
-      this.openDialog(Messages.DEVICE_TITLE_NEW, Messages.DEVICE_INSERT);
+      this.openDialog(Messages.USER_TITLE_NEW, Messages.USER_INSERT);
     },
     (error: HttpErrorResponse) => {
-      this.openDialog(Messages.ERROR, Messages.DEVICE_INSERT_ERROR, error);
+      this.openDialog(Messages.ERROR, Messages.USER_INSERT_ERROR, error);
     });
   }
 
   update() {
     this.userService.update(this.userForm.value).subscribe((data: any) => {
-      this.openDialog(Messages.DEVICE_TITLE_UPDATE, Messages.DEVICE_UPDATE);
+      this.openDialog(Messages.USER_TITLE_UPDATE, Messages.USER_UPDATE);
     },
     (error: HttpErrorResponse) => {
-      this.openDialog(Messages.ERROR, Messages.DEVICE_UPDATE_ERROR, error);
+      this.openDialog(Messages.ERROR, Messages.USER_UPDATE_ERROR, error);
     });
   }
 

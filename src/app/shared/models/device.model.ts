@@ -1,6 +1,5 @@
 export class Device {
-    id: number;
-    saferId: string;
+    srmaCode: string;
     userId: number;
     description: string;
 }

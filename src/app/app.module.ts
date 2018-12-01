@@ -1,3 +1,4 @@
+import { TrackingService } from './shared/services/tracking.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -62,6 +63,7 @@ import { appRoutes } from './routes';
 import { UserModalComponent } from './user/user-modal/user-modal.component';
 import { UserFormComponent } from './user/user-form/user-form.component';
 import { DeviceListComponent } from './device/device-list/device-list.component';
+import { TrackingDetailComponent } from './tracking/tracking-detail/tracking-detail.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig(), http, options);
@@ -81,7 +83,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     DeviceFormComponent,
     UserModalComponent,
     UserFormComponent,
-    DeviceListComponent
+    DeviceListComponent,
+    TrackingDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +94,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAFgM81Qz-SwfTzUsr4F51AgDj0HdN88CQ'
+      apiKey: 'AIzaSyArZuODxi1Tqq-0m1495GC3ZhHGBZYJAEc',
+      libraries: ['geometry']
     }),
 
     MatAutocompleteModule,
@@ -133,6 +137,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     AuthenticationService,
     DeviceService,
     UserService,
+    TrackingService,
     {
       provide: [HTTP_INTERCEPTORS, AuthHttp],
       useFactory: authHttpServiceFactory,

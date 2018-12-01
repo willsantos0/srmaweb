@@ -16,9 +16,9 @@
 <div class="mat-elevation-z8">
   <mat-table [dataSource]="dataSource" matSort>
 
-    <ng-container matColumnDef="saferId">
+    <ng-container matColumnDef="srmaCode">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Dispositivo</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.saferId }} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{ element.srmaCode }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="description">
@@ -26,12 +26,12 @@
       <mat-cell *matCellDef="let element"> {{ element.description }} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="id">
+    <ng-container matColumnDef="customSrmaCode">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Ações </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        <button mat-icon-button color="primary" focusable="false" >
+        <a mat-icon-button color="primary" focusable="false" [routerLink]='["/tracking", element.srmaCode]'>
           <i class="material-icons"> where_to_vote </i>
-        </button>
+        </a>
         <button mat-icon-button color="primary" focusable="false" (click)="openConfirmDialog(element)">
           <i class="material-icons"> delete_forever </i>
         </button>
