@@ -2,6 +2,34 @@
 
 <div class="container">
   <h2 class="title">{{ name }}</h2>
+
+  <div class="accordion">
+    <mat-accordion *ngFor="let info of infoLocations">
+      <mat-expansion-panel [ngStyle]="{'color':getColor(info.alert)}">
+        <mat-expansion-panel-header>
+          <mat-panel-title [ngStyle]="{'color':getColor(info.alert)}">
+            Descrição
+          </mat-panel-title>
+          <mat-panel-description [ngStyle]="{'color':getColor(info.alert)}">
+            {{ info.description }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <strong>Dispositivo:</strong> {{ info.srmaCode }}
+        <div><strong>Endereço:</strong> {{ info.address }}</div>
+        <div><strong>Status:</strong> {{ info.alert }}</div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <!-- <ul *ngFor="let info of infoLocations">
+    <li (click)="openDialog(info.srmaCode, info.address)">
+      <strong>Dispositivo:</strong> {{ info.srmaCode }}
+      <div><strong>Descrição:</strong> {{ info.description }}</div>
+      <div><strong>Endereço:</strong> {{ info.address }}</div>
+      <div><strong>Status:</strong> {{ info.alert }}</div>
+    </li>
+  </ul> -->
+
   <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
     <agm-marker *ngFor="let tracking of listTrackings" [latitude]="tracking.latitude" [longitude]="tracking.longitude">
       <agm-info-window>
@@ -9,7 +37,7 @@
         <div><strong>Descrição:</strong> {{ tracking.device.description }}</div>
         <div><strong>Latitude:</strong> {{ tracking.latitude }}</div>
         <div><strong>Longitude:</strong> {{ tracking.longitude }}</div>
-        </agm-info-window>
+      </agm-info-window>
     </agm-marker>
   </agm-map>
 </div>

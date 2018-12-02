@@ -63,6 +63,8 @@ import { appRoutes } from './routes';
 import { UserModalComponent } from './user/user-modal/user-modal.component';
 import { UserFormComponent } from './user/user-form/user-form.component';
 import { DeviceListComponent } from './device/device-list/device-list.component';
+import { GoogleMapsService } from './shared/services/google-maps.service';
+import { environment } from 'src/environments/environment';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig(), http, options);
@@ -92,7 +94,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyArZuODxi1Tqq-0m1495GC3ZhHGBZYJAEc',
+      apiKey: environment.API_KEY,
       libraries: ['geometry', 'places']
     }),
 
@@ -136,6 +138,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     DeviceService,
     UserService,
     TrackingService,
+    GoogleMapsService,
     {
       provide: [HTTP_INTERCEPTORS, AuthHttp],
       useFactory: authHttpServiceFactory,

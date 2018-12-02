@@ -1,9 +1,8 @@
 import { Alert } from '../enums/alert.enum';
 
-export class Device {
+export class InfoLocation {
     srmaCode: string;
-    userId: number;
     description: string;
+    address: string;
     alert: Alert;
 }
-

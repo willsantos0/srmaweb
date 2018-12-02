@@ -11,3 +11,15 @@ agm-map {
   color: #5961a0;
   margin: 13px 0px;
 }
+
+.container {
+  margin-bottom: 100px;
+}
+
+.mat-expansion-panel {
+  margin-bottom: 10px;
+}
+
+.accordion {
+  margin-bottom: 30px;
+}

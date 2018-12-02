@@ -2,15 +2,21 @@
   "device": [
     {
       "srmaCode": "ca6cc196-f69a-4c68-a673-09d78ac1839c",
-      "description": "Dispositivo de casa"
+      "description": "Dispositivo de casa",
+      "userId": 1,
+      "alert": "Sem alterações."
     },
     {
       "srmaCode": "9e5b721b-adfa-403d-aa0d-ee8c74af5088",
-      "description": "Dispositivo do carro 1"
+      "description": "Dispositivo do carro 1",
+      "userId": 1,
+      "alert": "Sem alterações."
     },
     {
       "srmaCode": "43b2055a-42b2-40c2-8863-7993709ec5fe",
-      "description": "Dispositivo do carro 2"
+      "description": "Dispositivo do carro 2",
+      "userId": 1,
+      "alert": "Movimentos detectados."
     }
   ],
   "tracking": [
@@ -20,7 +26,8 @@
       "longitude": -48.262667,
       "device": {
         "srmaCode": "ca6cc196-f69a-4c68-a673-09d78ac1839c",
-        "description": "Dispositivo de casa"
+        "description": "Dispositivo de casa",
+        "alert": "Sem alterações."
       }
     },
     {
@@ -29,7 +36,8 @@
       "longitude": -48.26344936,
       "device": {
         "srmaCode": "9e5b721b-adfa-403d-aa0d-ee8c74af5088",
-        "description": "Dispositivo do carro 1"
+        "description": "Dispositivo do carro 1",
+        "alert": "Sem alterações."
       }
     },
     {
@@ -38,8 +46,16 @@
       "longitude": -48.25761972,
       "device": {
         "srmaCode": "43b2055a-42b2-40c2-8863-7993709ec5fe",
-        "description": "Dispositivo do carro 2"
+        "description": "Dispositivo do carro 2",
+        "alert": "Movimentos detectados."
       }
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "name": "Usuário 1",
+      "email": "teste@teste.com.br"
     }
   ]
 }

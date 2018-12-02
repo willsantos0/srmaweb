@@ -15,7 +15,7 @@ export class AuthInterceptor implements HttpInterceptor {
             return next.handle(req.clone());
         }
 
-        if (this.auth.getToken() != null) {
+        if (this.auth.isAuthenticated()) {
             const clonedreq = req.clone({
                 headers: req.headers.set('Authorization', 'Bearer ' + this.auth.getToken())
             });
@@ -29,7 +29,7 @@ export class AuthInterceptor implements HttpInterceptor {
                     }
                 );
         } else {
-            this.router.navigateByUrl('/login');
+            this.auth.logout();
         }
     }
 }

@@ -13,6 +13,8 @@ export const TOKEN_NAME = 'access_token';
 })
 export class AuthenticationService extends GenericService {
 
+  userLogged: string;
+
   constructor(private http: HttpClient, private router: Router) {
     super();
   }
@@ -23,13 +25,19 @@ export class AuthenticationService extends GenericService {
       'senha': login.password
     };
 
-    return this.http.post<Login>(this.getUrlApi() + this.getEndpointLogin(),
+    return this.http.post<Login>(this.getUrlApiTeste() + this.getEndpointLogin(),
       data, { headers: this.getHeaders() });
   }
 
-  logout() {
+  logout(url?: string) {
     localStorage.removeItem(TOKEN_NAME);
-    this.router.navigate(['login']);
+    this.userLogged = null;
+
+    if (url) {
+      this.router.navigate(['/login'], { queryParams: { returnUrl: url }});
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 
   public getToken(): string {
@@ -46,6 +54,9 @@ export class AuthenticationService extends GenericService {
     if (decoded.exp === undefined) {
       return null;
     }
+
+    this.userLogged = decoded.sub;
+
     const date = new Date(0);
     date.setUTCSeconds(decoded.exp);
     return date;
@@ -56,7 +67,7 @@ export class AuthenticationService extends GenericService {
       token = this.getToken();
     }
     if (!token) {
-      return true;
+      return false;
     }
 
     const date = this.getTokenExpirationDate(token);
@@ -64,10 +75,11 @@ export class AuthenticationService extends GenericService {
       return false;
     }
 
-    const result = !(date.valueOf() > new Date().valueOf());
-    if (result) {
-      this.logout();
-    }
+    const result = (date.valueOf() > new Date().valueOf());
     return result;
+  }
+
+  getUserLogged() {
+    return this.userLogged ? this.userLogged.toUpperCase() : null;
   }
 }

@@ -12,6 +12,6 @@ export const appRoutes: Routes = [
     { path : '', redirectTo: 'home', pathMatch : 'full', canActivate: [ AuthGuard ] },
     { path: 'home', component: HomeComponent, canActivate: [ AuthGuard ] },
     { path: 'device', component: DeviceComponent, canActivate: [ AuthGuard ] },
-    { path: 'user', component: UserComponent},
-    { path: 'tracking/:srmaCode', component: TrackingComponent }
+    { path: 'user', component: UserComponent, canActivate: [ AuthGuard ] },
+    { path: 'tracking/:srmaCode', component: TrackingComponent, canActivate: [ AuthGuard ] }
 ];

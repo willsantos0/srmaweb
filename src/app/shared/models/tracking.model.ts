@@ -1,8 +1,8 @@
 import { Device } from './device.model';
 
 export class Tracking {
-    latitute: number;
-    longitute: number;
+    latitude: number;
+    longitude: number;
     srmaCode: string;
     device: Device;
 }

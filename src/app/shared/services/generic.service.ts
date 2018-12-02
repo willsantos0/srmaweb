@@ -29,8 +29,20 @@ export class GenericService {
     });
   }
 
+  getApiKeyGoogleMaps(): string {
+    return this._environment.API_KEY;
+  }
+
   getUrlApi(): string {
     return this._environment.URL_API;
+  }
+
+  getUrlApiTeste(): string {
+    return this._environment.URL_API_LOGIN;
+  }
+
+  getUrlApiGoogleMaps(): string {
+    return this._environment.URL_API_GOOGLE_MAPS;
   }
 
   getEndpointLogin(): string {
