@@ -40,7 +40,7 @@ export class DeviceFormComponent implements OnInit {
 
   deviceFormGroup() {
     this.deviceForm = this.formBuilder.group({
-      saferId: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+      srmaCode: new FormControl('', [Validators.required, Validators.maxLength(50)]),
       description: new FormControl('', Validators.maxLength(50))
     });
   }

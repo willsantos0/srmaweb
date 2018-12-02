@@ -13,8 +13,8 @@ export class TrackingService extends GenericService {
     super();
   }
 
-  get(srmaCode: string) {
-    return this.http.get(this.getUrlApi() + this.getEndpointTracking() + '?srmaCode=' + srmaCode,
+  get(srmaCode: string): Observable<Tracking> {
+    return this.http.get<Tracking>(this.getUrlApi() + this.getEndpointTracking() + '?srmaCode=' + srmaCode,
       { headers: this.getHeadersWithUserAuthorization() });
   }
 

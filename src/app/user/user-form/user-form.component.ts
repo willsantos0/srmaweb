@@ -103,8 +103,4 @@ export class UserFormComponent implements OnInit {
       console.log(error.message);
     }
   }
-
-  disableSaferId() {
-    this.disabled = !this.disabled;
-  }
 }

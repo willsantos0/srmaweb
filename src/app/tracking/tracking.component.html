@@ -1,14 +1,15 @@
+<app-navbar *ngIf="srmaCode"></app-navbar>
+
 <div class="container">
-
   <h2 class="title">{{ name }}</h2>
-
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
     <agm-marker *ngFor="let tracking of listTrackings" [latitude]="tracking.latitude" [longitude]="tracking.longitude">
       <agm-info-window>
-        <strong>InfoWindow content</strong>
-      </agm-info-window>
+        <div><strong>Dispositivo:</strong> {{ tracking.srmaCode }}</div>
+        <div><strong>Descrição:</strong> {{ tracking.device.description }}</div>
+        <div><strong>Latitude:</strong> {{ tracking.latitude }}</div>
+        <div><strong>Longitude:</strong> {{ tracking.longitude }}</div>
+        </agm-info-window>
     </agm-marker>
-
   </agm-map>
-
 </div>

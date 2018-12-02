@@ -63,7 +63,6 @@ import { appRoutes } from './routes';
 import { UserModalComponent } from './user/user-modal/user-modal.component';
 import { UserFormComponent } from './user/user-form/user-form.component';
 import { DeviceListComponent } from './device/device-list/device-list.component';
-import { TrackingDetailComponent } from './tracking/tracking-detail/tracking-detail.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig(), http, options);
@@ -83,8 +82,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     DeviceFormComponent,
     UserModalComponent,
     UserFormComponent,
-    DeviceListComponent,
-    TrackingDetailComponent
+    DeviceListComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +93,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     RouterModule.forRoot(appRoutes),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyArZuODxi1Tqq-0m1495GC3ZhHGBZYJAEc',
-      libraries: ['geometry']
+      libraries: ['geometry', 'places']
     }),
 
     MatAutocompleteModule,
